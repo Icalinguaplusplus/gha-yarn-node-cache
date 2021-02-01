@@ -1,6 +1,6 @@
-name: 'Yarn & Node install cache'
+name: 'Yarn/Node Cache w/ Working Dir'
 author: 'zach-hill'
-description: '1-liner to cache yarn and node_modules'
+description: '1-liner to cache yarn and node_modules, with env variable to set working directory'
 runs:
   using: 'node12'
   main: 'dist/restore/index.js'

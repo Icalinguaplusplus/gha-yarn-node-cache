@@ -30,7 +30,7 @@ async function yarnCache() {
 }
 
 async function run() {
-  const workingDir = process.env.WORKING_DIR ?? null;
+  const workingDir = process.env.WORKING_DIR || null;
   if (workingDir) {
 	  process.chdir(workingDir);
   }

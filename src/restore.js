@@ -30,6 +30,10 @@ async function yarnCache() {
 }
 
 async function run() {
+  const workingDir = process.env.WORKING_DIR ?? null;
+  if (workingDir) {
+	  process.chdir(workingDir);
+  }
   const os = await uname();
   const cachePath = await yarnCache();
   core.saveState("YARN_CACHE_PATH", cachePath);

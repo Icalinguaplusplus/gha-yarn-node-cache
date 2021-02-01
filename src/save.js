@@ -2,6 +2,10 @@ const core = require("@actions/core");
 const cache = require("@actions/cache");
 
 async function run() {
+  const workingDir = process.env.WORKING_DIR ?? null;
+  if (workingDir) {
+	  process.chdir(workingDir);
+  }
   const cacheKey = core.getState("YARN_CACHE_RESULT");
   const primaryKey = core.getState("YARN_CACHE_KEY");
   const cachePath = core.getState("YARN_CACHE_PATH");

@@ -1,5 +1,5 @@
 name: 'Yarn & Node install cache'
-author: 'egordm'
+author: 'zach-hill'
 description: '1-liner to cache yarn and node_modules'
 runs:
   using: 'node12'

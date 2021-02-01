@@ -7,7 +7,7 @@ async function uname() {
   let output = "";
   const options = {};
   options.listeners = {
-    stdout: (data) => {
+    stdout: data => {
       output += data.toString();
     },
   };
@@ -20,7 +20,7 @@ async function yarnCache() {
   let output = "";
   const options = {};
   options.listeners = {
-    stdout: (data) => {
+    stdout: data => {
       output += data.toString();
     },
   };
@@ -63,6 +63,6 @@ async function run() {
   core.info(`Cache restored from key: ${cacheKey}`);
 }
 
-run().catch((err) => {
+run().catch(err => {
   core.setFailed(err.toString());
 });

@@ -31,6 +31,6 @@ async function run() {
   }
 }
 
-run().catch((err) => {
+run().catch(err => {
   core.setFailed(err.toString());
 });

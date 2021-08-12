@@ -2,6 +2,7 @@ const core = require("@actions/core");
 const exec = require("@actions/exec");
 const md5File = require("md5-file");
 const cache = require("@actions/cache");
+const path = require('path')
 
 async function uname() {
   let output = "";
@@ -16,26 +17,13 @@ async function uname() {
   return output.trim();
 }
 
-async function yarnCache() {
-  let output = "";
-  const options = {};
-  options.listeners = {
-    stdout: data => {
-      output += data.toString();
-    },
-  };
-  await exec.exec("yarn cache dir", [], options);
-
-  return output.trim();
-}
-
 async function run() {
   const workingDir = process.env.WORKING_DIR || null;
   if (workingDir) {
     process.chdir(workingDir);
   }
   const os = await uname();
-  const cachePath = await yarnCache();
+  const cachePath = path.join(process.cwd(), '.yarn', 'cache')
   core.saveState("YARN_CACHE_PATH", cachePath);
 
   const hash = md5File.sync("yarn.lock");

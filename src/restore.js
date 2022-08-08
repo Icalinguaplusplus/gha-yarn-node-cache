@@ -7,6 +7,9 @@ const path = require('path')
 async function uname() {
   let output = "";
   const options = {};
+  if (process.env.prefix) {
+    output += process.env.prefix;
+  }
   options.listeners = {
     stdout: data => {
       output += data.toString();
